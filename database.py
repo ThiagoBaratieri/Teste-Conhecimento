@@ -1,3 +1,5 @@
+# Criar Tabelas
+
 import sqlite3
 
 def dadoExiste(cursor, tabela, id_coluna, id_valor):
