@@ -30,8 +30,32 @@ cursor.execute('''
 
 resultado_2 = cursor.fetchall()
 
-for categoria, total_ven in resultado_2:
-    print(f'Categoria: {categoria} | Total de Vendas: {total_ven}')
+for categoria, total_venda_2 in resultado_2:
+    print(f'Categoria: {categoria} | Total de Vendas: {total_venda_2}')
 
 print('\n')
+# 2.1 - Resolvendo usando as duas tabelas
+
+cursor.execute('''
+    SELECT p.Categoria, SUM(v.Preco_Total) AS Total_vendas
+    FROM Vendas v
+    JOIN Produtos p ON v.Produto_ID = p.Produto_ID
+    GROUP BY p.Categoria
+    ORDER BY Total_vendas DESC;
+''')
+
+resultado_2_1 = cursor.fetchall()
+
+for categoria, total_venda_2_1 in resultado_2_1:
+    print(f'Categoria: {categoria} | Total Venda: {total_venda_2_1}')
+
+print('\n')
+# 3 - Usando as tabelas `Vendas` e `Produtos`, escreva uma query SQL que retorna o nome da categoria 
+# e a quantidade total vendida de produtos dessa categoria
+
+
+
+
+
+
 conn.close()
