@@ -14,6 +14,8 @@ cursor.execute('''
 ''')
 resultado = cursor.fetchall()
 
+print('\n')
+print('---EXERCICIO 1 SQL---')
 for cliente_id, total_vendas in resultado:
     print(f'ID do Cliente: {cliente_id} | Total de Vendas: {total_vendas}')
 
@@ -30,6 +32,7 @@ cursor.execute('''
 
 resultado_2 = cursor.fetchall()
 
+print('---EXERCICIO 2 SQL---')
 for categoria, total_venda_2 in resultado_2:
     print(f'Categoria: {categoria} | Total de Vendas: {total_venda_2}')
 
@@ -46,6 +49,7 @@ cursor.execute('''
 
 resultado_2_1 = cursor.fetchall()
 
+print('---EXERCICIO 2.1 SQL---')
 for categoria, total_venda_2_1 in resultado_2_1:
     print(f'Categoria: {categoria} | Total Venda: {total_venda_2_1}')
 
@@ -53,7 +57,21 @@ print('\n')
 # 3 - Usando as tabelas `Vendas` e `Produtos`, escreva uma query SQL que retorna o nome da categoria 
 # e a quantidade total vendida de produtos dessa categoria
 
+cursor.execute('''
+    SELECT p.Categoria, SUM(v.Quantidade) AS Total_qntd
+    FROM Vendas v
+    JOIN Produtos p ON v.Produto_ID = p.Produto_ID
+    GROUP BY p.Categoria
+    ORDER BY Total_qntd DESC;
+''')
 
+resultado_3 = cursor.fetchall()
+
+print('---EXERCICIO 3 SQL---')
+for cat, total_qntd in resultado_3:
+    print(f'Categoria: {cat} | Quantidade Total: {total_qntd}')
+
+print('\n')
 
 
 
