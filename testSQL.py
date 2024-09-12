@@ -17,4 +17,21 @@ resultado = cursor.fetchall()
 for cliente_id, total_vendas in resultado:
     print(f'ID do Cliente: {cliente_id} | Total de Vendas: {total_vendas}')
 
+print('\n')
+# 2 - Escreva uma query SQL que retorna a soma total de vendas por categoria de produto, 
+# ordenada do maior para o menor valor. 
+
+cursor.execute('''
+    SELECT Categoria, SUM(Preco_Unitario)
+    FROM Produtos
+    GROUP BY Categoria 
+    ORDER BY Categoria DESC
+''')
+
+resultado_2 = cursor.fetchall()
+
+for categoria, total_ven in resultado_2:
+    print(f'Categoria: {categoria} | Total de Vendas: {total_ven}')
+
+print('\n')
 conn.close()
