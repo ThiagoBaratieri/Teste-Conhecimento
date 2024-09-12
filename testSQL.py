@@ -29,7 +29,6 @@ cursor.execute('''
     GROUP BY Categoria 
     ORDER BY Categoria DESC
 ''')
-
 resultado_2 = cursor.fetchall()
 
 print('---EXERCICIO 2 SQL---')
@@ -46,7 +45,6 @@ cursor.execute('''
     GROUP BY p.Categoria
     ORDER BY Total_vendas DESC;
 ''')
-
 resultado_2_1 = cursor.fetchall()
 
 print('---EXERCICIO 2.1 SQL---')
@@ -64,7 +62,6 @@ cursor.execute('''
     GROUP BY p.Categoria
     ORDER BY Total_qntd DESC;
 ''')
-
 resultado_3 = cursor.fetchall()
 
 print('---EXERCICIO 3 SQL---')
@@ -72,8 +69,5 @@ for cat, total_qntd in resultado_3:
     print(f'Categoria: {cat} | Quantidade Total: {total_qntd}')
 
 print('\n')
-
-
-
 
 conn.close()
