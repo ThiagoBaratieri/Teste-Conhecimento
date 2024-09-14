@@ -11,8 +11,6 @@ df = pd.DataFrame(data)
 
 # 1 - Escreva um código Python que calcula o valor total das vendas por cliente.
 
-cliente_id = data['Cliente_ID']
-produto_id = data['Produto_ID']
-preco_total = data['Preco_Total']
-
-print(cliente_id)
+totalVendasCliente = df.groupby('Cliente_ID')['Preco_Total'].sum().reset_index()
+totalVendasCliente = totalVendasCliente.sort_values(by='Preco_Total', ascending=False) # deixar em ordem DESC
+print(totalVendasCliente) # utilizei o metodo groupby() para agrupar os clientes pelo id
