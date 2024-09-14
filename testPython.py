@@ -26,3 +26,21 @@ def newDf(df):
 
 
 newDf(data)
+
+print('\n')
+# 3 -  Escreva um código Python para normalizar os valores de cada coluna no intervalo [0, 1].
+
+''' FORMULA NORMALIZAÇÃO
+Valor normalizado = x - min da coluna
+                    max coluna - min coluna
+'''
+
+df = pd.DataFrame({
+    'A': [1, 2, 3, 4],
+    'B': [10, 20, 30, 40],
+    'C': [100, 200, 300, 400]
+})
+
+df = pd.DataFrame(df)
+df_normalizado = (df - df.min()) / (df.max() - df.min())
+print(df_normalizado)
